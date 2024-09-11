@@ -52,7 +52,8 @@ Now let's look at the previous output to answer the questions:
 
 ## Directory discovery
 
-In the second section of the room we are interested in enumerating hidden directories to expand our attack surface. We will use **GoBuster**.  
+In the previous section we found a web server running on port 3333, which is serving a web application.  
+In the second section of the room we are interested in enumerating hidden directories of this application to expand our attack surface. We will use **GoBuster**.  
 For those unfamiliar, gobuster is a tool for brute-forcing URIs, among other things. It uses a wordlist to attempt to discover the target's directories.  
 Let's run
 
@@ -154,7 +155,7 @@ Edit the /tmp/shell.phtml with your favorite editor
 ![shellfile](../assets/images/tryhackme/offensive_pentesting/vulnversity/shellfile.png)
 
 We need to change the $ip variable with the ip of our own attackbox.  
-Remember: in a reverse shell the target initiates a connection to our own machine on a port where we are listening, hence it need to know our ip.
+Remember: in a reverse shell the target initiates a connection to our own machine on a port where we are listening, hence it needs to know our ip.
 
 Start the listener on our own machine:
 
@@ -314,7 +315,7 @@ www-data@vulnuniversity:/$ find / -perm -u=s -type f 2>/dev/null
 /sbin/mount.cifs
 ```
 
-We cross-check the files of the previous output with the programs on the _https://gtfobins.github.io/_ page and find out that _/bin/systemctl_ is susceptible to SUID exploitation.
+We cross-check the files of the previous output with the programs on the _https://gtfobins.github.io/_ page and find out that _/bin/systemctl_ is in our list and is susceptible to SUID exploitation.
 
 Since systemctl is owned by root that means that we can run it with root's permission.  
 How do we use this?  
@@ -355,7 +356,7 @@ Now we are root.
 
 **Question:** On the system, search for all SUID files. Which file stands out? **/bin/systemctl**  
 **Question:** What is the root flag value?  
-As for the user's flag the most logical course of action is to look in the /root folder
+As for bill's flag the most logical course of action is to look in the /root folder
 
 ```bash
 root@vulnuniversity:/# cd /root
