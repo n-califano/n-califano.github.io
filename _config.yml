@@ -16,9 +16,9 @@ permalink: /:categories/:title/
 paginate: 10
 
 # Author settings (optional)
-author:
-  name: Niccolò Califano
-  email: niccolo.califano19@gmail.com
+#author:
+ # name: Niccolò Califano
+  #email: niccolo.califano19@gmail.com
 
 # Exclude files from the build
 exclude:
