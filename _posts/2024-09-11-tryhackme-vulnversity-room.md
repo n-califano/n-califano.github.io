@@ -1,5 +1,5 @@
 ---
-title: "My First Post"
+title: "TryHackMe's Vulnversity Room"
 published: true
 ---
 
