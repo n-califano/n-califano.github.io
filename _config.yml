@@ -1,0 +1,28 @@
+# Site settings
+title: ncalifano's blog
+description: My tech blog.
+baseurl: "" # the subpath of your site, e.g. /blog, leave blank for root
+url: "https://n-califano.github.io/" # your GitHub Pages URL
+
+# Build settings
+markdown: kramdown
+theme: minima # you can choose another theme
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Additional options
+permalink: /:categories/:title/
+paginate: 10
+
+# Author settings (optional)
+author:
+  name: Niccolò Califano
+  email: niccolo.califano19@gmail.com
+
+# Exclude files from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
