@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "My First Post"
 date: 2024-09-11
 categories: category1 category2

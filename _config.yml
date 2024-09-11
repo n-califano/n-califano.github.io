@@ -16,6 +16,8 @@ plugins:
 # Additional options
 permalink: /:categories/:title/
 paginate: 10
+#owner: [Your name]
+#year: [Current Year]
 
 # Author settings (optional)
 #author:
