@@ -6,10 +6,12 @@ url: "https://n-califano.github.io/" # your GitHub Pages URL
 
 # Build settings
 markdown: kramdown
-theme: minima # you can choose another theme
+#theme: minima # you can choose another theme
+remote_theme: pages-themes/hacker@v0.2.0
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-remote-theme
 
 # Additional options
 permalink: /:categories/:title/
@@ -17,8 +19,8 @@ paginate: 10
 
 # Author settings (optional)
 #author:
- # name: Niccolò Califano
-  #email: niccolo.califano19@gmail.com
+# name: Niccolò Califano
+#email: niccolo.califano19@gmail.com
 
 # Exclude files from the build
 exclude:
