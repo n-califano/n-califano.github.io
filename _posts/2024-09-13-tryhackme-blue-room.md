@@ -250,7 +250,7 @@ meterpreter >
 ```
 
 The shell upgrading procedure also managed to upgrade our privileges.  
-We can check this running the `getsystem` command which is a meterpreter command which attempt to elevate our privileges.
+We can check this running the `getsystem` command which is a meterpreter command that attempts to elevate our privileges.
 
 ```bash
 meterpreter > getsystem
@@ -258,8 +258,9 @@ meterpreter > getsystem
 ```
 
 As you can see from the output we are already running as SYSTEM, so we already have the highest privileges.  
-Next we migrate to a process owned by SYSTEM, in fact even if we are SYSTEM does not mean that our process is: we could be restrained by limitations that depends on the specific exploit used to gain access.  
-In addition our current process might be short-lived, migrating to a long-running SYSTEM process such as svchost.exe or winlogon.exe gives us more stable and persistent access.  
+Next, we migrate to a process owned by SYSTEM because even if we are SYSTEM, this does not mean that our process is: we could be restrained by limitations that depend on the specific exploit used to gain access.  
+In addition, our current process might be short-lived.  
+Migrating to a long-running SYSTEM process such as svchost.exe or winlogon.exe gives us a more stable and persistent access.  
 Let's check the running processes:
 
 ```bash
@@ -407,6 +408,8 @@ meterpreter > cat flag1.txt
 flag{access_the_machine}meterpreter >
 ```
 
+**Question:** Flag 1? **flag{access_the_machine}**
+
 The second flag can be found where the password are stored:
 
 ```bash
@@ -473,8 +476,9 @@ Mode              Size      Type  Last modified              Name
 
 meterpreter > cat flag2.txt
 flag{sam_database_elevated_access}meterpreter >
-
 ```
+
+**Question:** Flag 2? **flag{sam_database_elevated_access}**
 
 The third flag is in an _excellent location to loot_ and has something to do with the administrator of the system.  
 After looking around a bit in Jon's Users folder:
@@ -496,3 +500,7 @@ Mode              Size  Type  Last modified              Name
 meterpreter > cat flag3.txt
 flag{admin_documents_can_be_valuable}meterpreter >
 ```
+
+**Question:** Flag 3? **flag{admin_documents_can_be_valuable}**
+
+This concludes the Blue room, see you in the next one!
