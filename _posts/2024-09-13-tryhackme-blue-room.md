@@ -16,7 +16,7 @@ In the following sections we assume that 10.10.205.212 is the target machine's I
 We start with a scan of the target machine using nmap.  
 Nmap has a `--script` parameter that allows us to run lua scripts during the scan, the tool has many built-in scripts that we can use.  
 We are going to use the 'vuln' script: it tries to find known vulnerabilities on the machine while scanning it.  
-For further information on nmap scripts visit https://nmap.org/book/nse-usage.html#nse-categories
+For further information on nmap scripts visit <https://nmap.org/book/nse-usage.html#nse-categories>
 
 ```bash
 root@ip-10-10-209-104:~# nmap -sV --script vuln 10.10.205.212
@@ -207,7 +207,7 @@ You may have to press Enter for the shell to appear.
 Now that we have gained a foothold into the system the next step is to elevate our permissions.  
 We attempt to do so by upgrading our shell to a **meterpreter** shell.  
 What is meterpreter? It's basically a shell on steroids provided by Metasploit, it provides much broader and advanced functions compared to a regular shell.  
-If you are interested in learning more check out this article: https://medium.com/@differentiate.function/meterpreter-and-shell-differences-and-use-cases-7bd201bbcd94#:~:text=Shell%20is%20used%20for%20basic,information%2C%20and%20perform%20various%20attacks.
+If you are interested in learning more check out this article: [Meterpreter article](<[URL](https://medium.com/@differentiate.function/meterpreter-and-shell-differences-and-use-cases-7bd201bbcd94#:~:text=Shell%20is%20used%20for%20basic,information%2C%20and%20perform%20various%20attacks.)>)
 
 First we background the current shell session
 
