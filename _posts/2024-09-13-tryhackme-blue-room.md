@@ -207,7 +207,7 @@ You may have to press Enter for the shell to appear.
 Now that we have gained a foothold into the system the next step is to elevate our permissions.  
 We attempt to do so by upgrading our shell to a **meterpreter** shell.  
 What is meterpreter? It's basically a shell on steroids provided by Metasploit, it provides much broader and advanced functions compared to a regular shell.  
-If you are interested in learning more check out this article: [Meterpreter article](https://medium.com/@differentiate.function/meterpreter-and-shell-differences-and-use-cases-7bd201bbcd94)
+If you are interested in learning more check out [this article](https://medium.com/@differentiate.function/meterpreter-and-shell-differences-and-use-cases-7bd201bbcd94).
 
 First we background the current shell session
 
