@@ -1,3 +1,8 @@
+---
+title: "TryHackMe's Kenobi Room"
+published: true
+---
+
 # TryHackMe's Kenobi Room
 
 ## Intro
