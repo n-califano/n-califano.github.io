@@ -40,9 +40,9 @@ Nmap done: 1 IP address (1 host up) scanned in 25.92 seconds
 ```
 
 The scan reveal useful information.  
-Navigate to <TARGET_IP>:8080 and you will find a Jenkins application running.  
+Navigate to TARGET_IP:8080 and you will find a Jenkins application running.  
 Jenkins is a famous tool used for CI/CD workflows.  
-We will attempt to crack the login page with a dictionary attack, using **Burp Intruder**.
+We will attempt to crack the login page with a dictionary attack, using **Burp Intruder**
 
 Try to login with any username/password combination, capture the request with Burp and send it to the Intruder module.
 
