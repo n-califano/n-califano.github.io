@@ -7,19 +7,19 @@ published: true
 
 ## Introduction
 
-The Game Zone room on TryHackMe presents a learning experience for aspiring ethical hackers, simulating a real-world scenario of web application exploitation. In this post, we’ll guide you through the key stages of the attack, from initial access to escalating privileges, showcasing practical techniques using tools like SQL injection, password cracking, and service exploitation.
+The Game Zone room on TryHackMe presents a learning experience for aspiring ethical hackers, simulating a real-world scenario of web application exploitation. This post will guide you through the key stages of the attack, from initial access to escalating privileges, showcasing practical techniques using tools like SQL injection, password cracking, and service exploitation.
 
 Whether you're sharpening your pentesting skills or just getting started, this guide will help you understand the critical steps in compromising a vulnerable system, using the Game Zone room as a training ground. Let's dive in!
 
 ## Initial access
 
 The room provides a web application at http://10.10.218.195/, we will login leveraging a sql injection vulnerability.
-When an user tries to login the database receive a query similar to this:  
+When a user tries to login the database receives a query similar to this:  
 **SELECT \* FROM users WHERE username = :username AND password := password**  
 We will use `' or 1=1 -- -` as the username and a empty password, so the query will look like this:  
 **SELECT \* FROM users WHERE username = '' or 1=1 -- - AND password =**  
 effectively becoming **SELECT \* FROM users WHERE username = '' or 1=1**  
-The `'` closes username string and `-- -` are used to comment out what comes after it.  
+The `'` closes username string and `-- -` is used to comment out what comes after it.  
 The `1=1` forces the where clause to evaluate to true, this way we will login with the first user returned by the query.  
 This allows us to login even if we don't know any valid username and if the classic 'admin' username is not present.
 
