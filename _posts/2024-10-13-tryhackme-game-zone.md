@@ -5,6 +5,8 @@ published: true
 
 # TryHackMe's Game Zone Room
 
+<https://tryhackme.com/r/room/gamezone>
+
 ## Introduction
 
 The Game Zone room on TryHackMe presents a learning experience for aspiring ethical hackers, simulating a real-world scenario of web application exploitation. This post will guide you through the key stages of the attack, from initial access to escalating privileges, showcasing practical techniques using tools like SQL injection, password cracking, and service exploitation.
