@@ -391,7 +391,7 @@ On your attack box `bg` your current session and download `linpeas`, which is a 
 msf6 exploit(multi/handler) > wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh
 ```
 
-Restart the session and upload the script.
+Resume the session and upload the script.
 
 ```bash
 msf6 exploit(multi/handler) > sessions -i 1
