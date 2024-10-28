@@ -29,7 +29,7 @@ Examining the stream it becomes clear that the POST request was used to upload a
 ![](../assets/images/tryhackme/offensive_pentesting/overpass2hacked/http_stream.png)
 
 Now, you should expect that at some point the attacker triggered the uploaded payload.  
-Keep scrolling down in the http request and you will find the GET request that activated the _payload.php_ payload.
+Keep scrolling down in the http packets and you will find the GET request that activated the _payload.php_ payload.
 
 ![](../assets/images/tryhackme/offensive_pentesting/overpass2hacked/payload_triggered.png)
 
@@ -172,7 +172,7 @@ func passwordHandler(_ ssh.Context, password string) bool {
 
 Basically when someone tries to access the backdoor is prompted for a password.  
 The password provided is then concatenated with the salt value and hashed, if the hash matches the hash saved in the backdoor program the authentication is successfull.  
-Keep in mind that the default hard-coded hash seen earlier can be overridden by a command line parameter, and that is exactly what the **./backdoor -a** command did.  
+Keep in mind that the default hard-coded hash seen earlier can be overridden by a command line argument, and that is exactly what the **./backdoor -a** command did.  
 You saw this command in the pcap analysis.  
 So the hash you are interested in is the following:
 
