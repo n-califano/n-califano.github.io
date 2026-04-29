@@ -297,12 +297,6 @@ Task 6 and 7 hint to cron as a possible vector for privilege escalation, not nee
 cat /home/guly/user.txt
 ```
 
-```
-374e753d0c175c322f87c93103ac8451
-```
-
-USER FLAG: **374e753d0c175c322f87c93103ac8451**
-
 ```bash
 cat /etc/sudoers
 ```
@@ -317,9 +311,3 @@ Task 9: What is the name of the script that guly can run as root without a passw
 ```bash
 cat /root/root.txt
 ```
-
-```
-3d5694febd9c595628528017f851e506
-```
-
-ROOT FLAG: **3d5694febd9c595628528017f851e506**
