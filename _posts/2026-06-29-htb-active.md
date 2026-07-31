@@ -25,7 +25,7 @@ Run port scanning
 python portscan.py --target <TARGET_IP>
 ```
 
-This is a [custom tool](https://github.com/n-califano/sectools/blob/main/portscan.py). If you want to run standard commands run
+This is a [custom tool](https://github.com/n-califano/sectools/blob/main/tools/common/portscan.py). If you want to run standard commands run
 
 ```bash
 nmap -p- --min-rate 5000 -oN all_tcp_ports.txt <TARGET_IP>

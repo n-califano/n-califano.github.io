@@ -23,7 +23,7 @@ Scan the target
 python portscan.py --target <TARGET_IP>
 ```
 
-This custom script can be found at [https://github.com/n-califano/sectools/blob/main/portscan.py](https://github.com/n-califano/sectools/blob/main/portscan.py)
+This custom script can be found at [https://github.com/n-califano/sectools/blob/main/tools/common/portscan.py](https://github.com/n-califano/sectools/blob/main/tools/common/portscan.py)
 
 If you want to use standard tools you can run
 

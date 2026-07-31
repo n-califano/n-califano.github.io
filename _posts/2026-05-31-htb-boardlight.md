@@ -65,7 +65,7 @@ Move to web enumeration
 python webenum.py  --web --api --vhost board.htb -t http://board.htb
 ```
 
-This is a custom tool that performs both subdomain and subdirectory enumeration. You can find it at https://github.com/n-califano/sectools/blob/main/webenum.py. Otherwise, if you want to use standard tools, you can run
+This is a [custom tool](https://github.com/n-califano/sectools/blob/main/tools/common/webenum.py) that performs both subdomain and subdirectory enumeration. Otherwise, if you want to use standard tools, you can run
 
 ```bash
 ffuf -u http://board.htb -H "Host: FUZZ.board.htb" -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -mc 200,201,204,301,302,307,401,403,405,500 -fs 15949 -o <OUTFILE> -of csv -s
